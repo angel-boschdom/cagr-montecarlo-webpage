@@ -61,6 +61,7 @@ function runSimulations() {
         label: `Percentile ${(index + 1)*10}`,
         data: data,
         borderColor: getColorForPercentile(index + 1),
+        backgroundColor: getColorForPercentile(index + 1),
         borderWidth: 1,
         pointRadius: 0, // Hide points for a cleaner look
     }));
