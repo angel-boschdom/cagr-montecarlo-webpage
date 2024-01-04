@@ -73,6 +73,7 @@ function runSimulations() {
             datasets: datasets
         },
         options: {
+            aspectRatio: 4 / 3, // Custom aspect ratio (4:3)
             animation: true,
             scales: {
                 x: {
@@ -90,7 +91,14 @@ function runSimulations() {
             },
             plugins: {
                 legend: {
-                    display: true // Display the legend to differentiate percentiles
+                    display: true, // Display the legend
+                    position: 'top', // Position the legend at the top
+                    align: 'start', // Align the legend to the start (left)
+                    labels: {
+                        boxWidth: 20, // Width of the color box
+                        padding: 20, // Padding between rows
+                        usePointStyle: true, // Use point style instead of box
+                    },
                 },
                 tooltip: {
                     enabled: true // Enable tooltips
