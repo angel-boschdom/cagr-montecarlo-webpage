@@ -74,7 +74,7 @@ function runSimulations() {
             datasets: datasets
         },
         options: {
-            aspectRatio: 4 / 3, // Custom aspect ratio (4:3)
+            aspectRatio: 3 / 4, // Custom aspect ratio (3:4)
             animation: true,
             scales: {
                 x: {
@@ -96,8 +96,8 @@ function runSimulations() {
                     position: 'top', // Position the legend at the top
                     align: 'start', // Align the legend to the start (left)
                     labels: {
-                        boxWidth: 20, // Width of the color box
-                        padding: 20, // Padding between rows
+                        boxWidth: 10, // Width of the color box
+                        padding: 10, // Padding between rows
                         usePointStyle: true, // Use point style instead of box
                     },
                 },
