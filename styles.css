@@ -17,6 +17,12 @@ button {
     margin-top: 20px;
 }
 
+#runSimulations {
+    padding: 15px 30px; /* Increase padding to make the button larger */
+    font-size: 20px; /* Increase font size for better visibility */
+    cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+}
+
 #simulationResult {
     margin-top: 20px;
     width: 100%;
