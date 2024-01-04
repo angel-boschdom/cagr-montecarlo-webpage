@@ -27,18 +27,23 @@ function runSimulations() {
     var timeHorizon = parseInt(document.getElementById('timeHorizon').value);
     var monteCarloSimulations = parseInt(document.getElementById('monteCarloSimulations').value);
 
+    // Derived values
+    var numMonths = timeHorizon*12;
+    var monthlyReturn = Math.log(1 + cagr)/12; // like cagr/12 but adjusted for compounding
+    var monthlyVolatility = volatility/Math.sqrt(12); // lognormal process, volatility grows with sqrt(time)
+
     // Run all simulations and store final values with corresponding simulation data
     var simulationResults = [];
     for (let sim = 0; sim < monteCarloSimulations; sim++) {
         let data = [amountInvested];
-        for (let year = 1; year <= timeHorizon; year++) {
-            let lastValue = data[year - 1];
-            // Simulate the annual growth with volatility
-            let annualGrowth = cagr + volatility*gaussianRandom(mean=0, stdev=1)
-            let newValue = lastValue * (1 + annualGrowth);
+        for (let month = 1; month <= numMonths; month++) {
+            let lastValue = data[month - 1];
+            // Simulate the monthly growth with volatility
+            let monthlyGrowth = monthlyReturn + monthlyVolatility*gaussianRandom(mean=0, stdev=1)
+            let newValue = lastValue * (1 + monthlyGrowth);
             data.push(newValue);
         }
-        simulationResults.push({ finalValue: data[timeHorizon], data: data });
+        simulationResults.push({ finalValue: data[numMonths], data: data });
     }
 
     // Sort simulation results by final value
@@ -70,7 +75,7 @@ function runSimulations() {
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: Array.from({length: timeHorizon + 1}, (_, i) => i), // [0, 1, 2, ..., timeHorizon]
+            labels: Array.from({length: numMonths + 1}, (_, i) => (i / 12).toFixed(1)), // [0, 0.1, 0.2, ..., numMonths/12]
             datasets: datasets
         },
         options: {
