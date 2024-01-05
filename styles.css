@@ -2,39 +2,25 @@
 .container {
     width: 100%; /* Full width */
     margin: 0 auto; /* Center the container */
+    display: flex; /* Added this line to enable Flexbox layout */
+    flex-direction: column; /* Stack children vertically on small screens */
 }
-
-/* Styles for the input elements and labels to ensure they stack vertically */
-label,
-input,
-button {
-    display: block; /* Make each element a block-level element */
-    width: 90%; /* Set a max width for better readability */
-    margin: 10px auto; /* Center elements with automatic margins and add space around */
-}
-
-/* Styles for the simulationResult */
+.content,
 #simulationResult {
-    width: 90%; /* Full width on mobile, with some padding */
-    margin: 20px auto; /* Center and add space around the element */
+    width: 100%; 
 }
 
-/* Media query for desktop devices */
+/* Styles for desktop devices */
 @media (min-width: 768px) {
     .container {
-        width: 90%; /* Set a max width for the container */
-        margin: 0 auto; /* Center the container */
+        flex-direction: row; /* Stack children horizontally on larger screens */
+        justify-content: space-between;
+        align-items: start;
     }
+    
+    .content,
     #simulationResult {
-        width: 90%; /* Full width on desktop, with some padding */
-        margin: 20px auto; /* Center and add space around the element */
+        width: 45%; 
+        padding: 20px;
     }
-}
-
-/* Styles for the Run Simulations button */
-#runSimulations {
-    padding: 15px 30px; /* Increase padding to make the button larger */
-    font-size: 20px; /* Increase font size for better visibility */
-    cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
-    margin: 20px auto; /* Center button and add space around it */
 }
