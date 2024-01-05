@@ -5,7 +5,10 @@
     display: flex; /* Added this line to enable Flexbox layout */
     flex-direction: column; /* Stack children vertically on small screens */
 }
-.content,
+.content {
+    width: 100%; 
+    flex-direction: column; /* Added this line to stack children vertically */
+}
 #simulationResult {
     width: 100%; 
 }
