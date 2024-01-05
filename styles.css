@@ -2,35 +2,30 @@
 .container {
     width: 100%; /* Full width */
     margin: 0 auto; /* Center the container */
-    display: grid; /* Use CSS Grid layout */
-    grid-template-areas: 
-        "content"
-        "simulationResult"
-        "explanation"; /* Define grid areas */
+    display: flex; /* Added this line to enable Flexbox layout */
+    flex-direction: column; /* Stack children vertically on small screens */
 }
-.content {
-    width: 100%; 
-    grid-area: content; /* Assign the content to its grid area */
-}
+.content,
 #simulationResult {
-    width: 100%; 
-    grid-area: simulationResult; /* Assign the simulationResult to its grid area */
+    width: 100%;
 }
-p:last-of-type {
-    grid-area: explanation; /* Assign the last paragraph to its grid area */
+.content input[type="number"],
+.content input[type="range"],
+.content button {
+    width: 50%; /* Set the width of inputs and button to 50% */
+    margin-bottom: 20px; /* Increase vertical separation */
 }
-
 /* Styles for desktop devices */
 @media (min-width: 768px) {
     .container {
-        grid-template-areas: "content simulationResult" "content explanation"; /* Redefine grid areas for larger screens */
-        grid-template-columns: 1fr 1fr; /* Create two equal-width columns */
+        flex-direction: row; /* Stack children horizontally on larger screens */
+        justify-content: space-between;
+        align-items: start;
     }
     
     .content,
-    #simulationResult,
-    p:last-of-type {
-        width: 90%; 
+    #simulationResult {
+        width: 45%;
         padding: 20px;
     }
 }
