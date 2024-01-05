@@ -7,7 +7,8 @@
 }
 .content {
     width: 100%; 
-    flex-direction: column; /* Added this line to stack children vertically */
+    display: flex; /* Added this line to enable Flexbox layout */
+    flex-direction: column; /* Stack children vertically */
 }
 #simulationResult {
     width: 100%; 
