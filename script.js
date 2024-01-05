@@ -118,9 +118,8 @@ function runSimulations() {
         }
     });
 
-    // Scroll to the bottom of the page
-    window.scrollTo({
-        top: document.body.scrollHeight,
+    // Scroll to the chart element
+    resultElement.scrollIntoView({
         behavior: 'smooth'
     });
 }
