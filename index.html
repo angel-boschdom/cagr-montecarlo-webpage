@@ -8,32 +8,29 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>Simulate Compound Growth With Volatility</h1>
-    <p>Interested in how your investment could grow? Worried about how risky it can be to invest? This simulation tool uses Monte Carlo simulations to estimate the evolution of an investment. It takes into account the compound annual growth rate (CAGR) and the yearly volatility, and runs thousands of cases to show you the range of outcomes you might expect.</p>
-    
-    <label for="amountInvested">Amount invested:</label>
-    <input type="number" id="amountInvested" name="amountInvested" value="1000" min="0" step="10">
-
-    <label for="cagr">CAGR (%): <span id="cagrValue">9</span>%</label>
-    <input type="range" id="cagr" name="cagr" min="0" max="30" value="9" step="0.5" oninput="updateSliderValue('cagr', 'cagrValue')">
-
-    <label for="volatility">Annualized volatility (%): <span id="volatilityValue">17</span>%</label>
-    <input type="range" id="volatility" name="volatility" min="0" max="70" value="17" step="0.5" oninput="updateSliderValue('volatility', 'volatilityValue')">
-
-    <label for="timeHorizon">Time horizon (years): <span id="timeHorizonValue">10</span></label>
-    <input type="range" id="timeHorizon" name="timeHorizon" min="1" max="40" value="15" step="1" oninput="updateSliderValue('timeHorizon', 'timeHorizonValue')">
-
-    <label for="monteCarloSimulations">Number of Monte Carlo simulations:</label>
-    <input type="number" id="monteCarloSimulations" name="monteCarloSimulations" value="5000" min="1000" step="1000">
-
-    <button id="runSimulations" onclick="runSimulations()">Run simulations</button>
-
-    <div id="simulationResult">
-        <!-- The 2D figure is displayed here -->
+    <div class="container">
+        <div class="content">
+            <h1>Simulate Compound Growth With Volatility</h1>
+            <p>Interested in how your investment could grow? Worried about how risky it can be to invest? This simulation tool uses Monte Carlo simulations to estimate the evolution of an investment. It takes into account the compound annual growth rate (CAGR) and the yearly volatility, and runs thousands of cases to show you the range of outcomes you might expect.</p>
+            
+            <label for="amountInvested">Amount invested:</label>
+            <input type="number" id="amountInvested" name="amountInvested" value="1000" min="0" step="10">
+            <label for="cagr">CAGR (%): <span id="cagrValue">9</span>%</label>
+            <input type="range" id="cagr" name="cagr" min="0" max="30" value="9" step="0.5" oninput="updateSliderValue('cagr', 'cagrValue')">
+            <label for="volatility">Annualized volatility (%): <span id="volatilityValue">17</span>%</label>
+            <input type="range" id="volatility" name="volatility" min="0" max="70" value="17" step="0.5" oninput="updateSliderValue('volatility', 'volatilityValue')">
+            <label for="timeHorizon">Time horizon (years): <span id="timeHorizonValue">10</span></label>
+            <input type="range" id="timeHorizon" name="timeHorizon" min="1" max="40" value="15" step="1" oninput="updateSliderValue('timeHorizon', 'timeHorizonValue')">
+            <label for="monteCarloSimulations">Number of Monte Carlo simulations:</label>
+            <input type="number" id="monteCarloSimulations" name="monteCarloSimulations" value="5000" min="1000" step="1000">
+            <button id="runSimulations" onclick="runSimulations()">Run simulations</button>
+            
+            <p>Monte Carlo simulations are a way to predict the outcome of a scenario that has a significant degree of uncertainty. By running thousands of simulations, each with random variations based on your inputted volatility, the tool can model a vast range of possible investment paths. However, to keep the graph clear and easy to interpret, only ten representative trajectories are displayed—each one corresponding to a different percentile of the final investment distribution. This approach gives you a snapshot of potential outcomes, from the lower end (what you might end up with in less favorable conditions) to the higher end (the outcome if things go exceptionally well).</p>
+        </div>
+        <div id="simulationResult">
+            <!-- The 2D figure is displayed here -->
+        </div>
     </div>
-
-    <p>Monte Carlo simulations are a way to predict the outcome of a scenario that has a significant degree of uncertainty. By running thousands of simulations, each with random variations based on your inputted volatility, the tool can model a vast range of possible investment paths. However, to keep the graph clear and easy to interpret, only ten representative trajectories are displayed—each one corresponding to a different percentile of the final investment distribution. This approach gives you a snapshot of potential outcomes, from the lower end (what you might end up with in less favorable conditions) to the higher end (the outcome if things go exceptionally well).</p>
-
     <script src="/cagr-montecarlo-webpage/script.js"></script>
 </body>
 </html>

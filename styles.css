@@ -13,21 +13,23 @@
 }
 
 /* Media query for desktop devices */
-@media (min-width: 768px) { /* Adjust the min-width as needed for your breakpoint */
+@media (min-width: 768px) {
     .container {
-        flex-direction: column; 
+        flex-direction: row; /* Place items side by side on desktop */
         justify-content: center; /* Center content horizontally */
         align-items: flex-start; /* Align items to the start of the cross axis */
     }
-
     #simulationResult {
-        width: 50%; /* Adjust the width as needed for your layout */
+        width: 50%; /* Take up half of the container's width */
         margin-top: 0; /* Reset the margin top */
         margin-left: 20px; /* Add some space between the elements */
+        order: 2; /* Place the simulationResult on the right */
+    }
+    .container > :not(#simulationResult) {
+        width: 50%; /* Assign half of the width to elements except simulationResult */
+        order: 1; /* Place these elements on the left */
     }
 }
-
-/* Additional styles for the rest of the elements */
 
 /* Styles for the Run Simulations button */
 #runSimulations {
