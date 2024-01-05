@@ -1,31 +1,37 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+/* Base styles for mobile-first approach */
+.container {
+    display: flex; /* Enable flexbox layout */
+    flex-direction: column; /* Stack elements vertically by default */
+    align-items: center; /* Center content horizontally */
+    width: 100%; /* Full width */
 }
 
-label {
-    display: block;
-    margin-top: 20px;
+/* Styles for the simulationResult */
+#simulationResult {
+    width: 100%; /* Full width on mobile */
+    margin-top: 20px; /* Add some space between elements */
 }
 
-input[type=number], input[type=range], button {
-    margin-top: 5px;
+/* Media query for desktop devices */
+@media (min-width: 768px) { /* Adjust the min-width as needed for your breakpoint */
+    .container {
+        flex-direction: column; 
+        justify-content: center; /* Center content horizontally */
+        align-items: flex-start; /* Align items to the start of the cross axis */
+    }
+
+    #simulationResult {
+        width: 50%; /* Adjust the width as needed for your layout */
+        margin-top: 0; /* Reset the margin top */
+        margin-left: 20px; /* Add some space between the elements */
+    }
 }
 
-button {
-    display: block;
-    margin-top: 20px;
-}
+/* Additional styles for the rest of the elements */
 
+/* Styles for the Run Simulations button */
 #runSimulations {
     padding: 15px 30px; /* Increase padding to make the button larger */
     font-size: 20px; /* Increase font size for better visibility */
     cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
-}
-
-#simulationResult {
-    margin-top: 20px;
-    width: 100%;
-    height: 600px; /* TO DO: adjust */
-    border: 1px solid rgb(255, 255, 255); /* white */
 }
