@@ -2,29 +2,35 @@
 .container {
     width: 100%; /* Full width */
     margin: 0 auto; /* Center the container */
-    display: flex; /* Added this line to enable Flexbox layout */
-    flex-direction: column; /* Stack children vertically on small screens */
+    display: grid; /* Use CSS Grid layout */
+    grid-template-areas: 
+        "content"
+        "simulationResult"
+        "explanation"; /* Define grid areas */
 }
 .content {
     width: 100%; 
-    display: flex; /* Added this line to enable Flexbox layout */
-    flex-direction: column; /* Stack children vertically */
+    grid-area: content; /* Assign the content to its grid area */
 }
 #simulationResult {
     width: 100%; 
+    grid-area: simulationResult; /* Assign the simulationResult to its grid area */
+}
+p:last-of-type {
+    grid-area: explanation; /* Assign the last paragraph to its grid area */
 }
 
 /* Styles for desktop devices */
 @media (min-width: 768px) {
     .container {
-        flex-direction: row; /* Stack children horizontally on larger screens */
-        justify-content: space-between;
-        align-items: start;
+        grid-template-areas: "content simulationResult" "content explanation"; /* Redefine grid areas for larger screens */
+        grid-template-columns: 1fr 1fr; /* Create two equal-width columns */
     }
     
     .content,
-    #simulationResult {
-        width: 45%; 
+    #simulationResult,
+    p:last-of-type {
+        width: 90%; 
         padding: 20px;
     }
 }
