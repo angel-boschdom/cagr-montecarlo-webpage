@@ -1,36 +1,40 @@
 /* Base styles for mobile-first approach */
 .container {
-    display: flex; /* Enable flexbox layout */
-    flex-direction: column; /* Stack elements vertically by default */
-    align-items: center; /* Center content horizontally */
     width: 100%; /* Full width */
+    margin: 0 auto; /* Center the container */
 }
+
+/* Styles for the input elements and labels to ensure they stack vertically */
+label,
+input,
+button {
+    display: block; /* Make each element a block-level element */
+    width: 90%; /* Set a max width for better readability */
+    margin: 10px auto; /* Center elements with automatic margins and add space around */
+}
+
 /* Styles for the simulationResult */
 #simulationResult {
-    width: 100%; /* Full width on mobile */
-    margin-top: 20px; /* Add some space between elements */
+    width: 90%; /* Full width on mobile, with some padding */
+    margin: 20px auto; /* Center and add space around the element */
 }
+
 /* Media query for desktop devices */
 @media (min-width: 768px) {
     .container {
-        flex-direction: column; /* Keep items stacked vertically on desktop */
-        justify-content: center; /* Center content horizontally */
-        align-items: center; /* Keep items centered horizontally */
+        width: 90%; /* Set a max width for the container */
+        margin: 0 auto; /* Center the container */
     }
     #simulationResult {
-        width: 100%; /* Full width on desktop */
-        margin-top: 20px; /* Keep the space between elements */
-        order: 2; /* Keep the simulationResult below the inputs */
-    }
-    .container > :not(#simulationResult) {
-        width: 100%; /* Full width for all elements */
-        order: 1; /* Keep these elements above the simulationResult */
+        width: 90%; /* Full width on desktop, with some padding */
+        margin: 20px auto; /* Center and add space around the element */
     }
 }
+
 /* Styles for the Run Simulations button */
 #runSimulations {
     padding: 15px 30px; /* Increase padding to make the button larger */
     font-size: 20px; /* Increase font size for better visibility */
     cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
-    margin-top: 20px; /* Add some space above the button */
+    margin: 20px auto; /* Center button and add space around it */
 }
