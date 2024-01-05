@@ -30,7 +30,7 @@
             <label for="timeHorizon">Time horizon (years): <span id="timeHorizonValue">10</span></label>
             <input type="range" id="timeHorizon" name="timeHorizon" min="1" max="40" value="15" step="1" oninput="updateSliderValue('timeHorizon', 'timeHorizonValue')">
             <label for="monteCarloSimulations">Number of Monte Carlo simulations:</label>
-            <input type="number" id="monteCarloSimulations" name="monteCarloSimulations" value="5000" min="1000" step="1000">
+            <input type="number" id="monteCarloSimulations" name="monteCarloSimulations" value="7000" min="1000" step="1000">
             <button id="runSimulations" onclick="runSimulations()">Run simulations</button>
             
             <p>Monte Carlo simulations are a way to predict the outcome of a scenario that has a significant degree of uncertainty. By running thousands of simulations, each with random variations based on your inputted volatility, the tool can model a vast range of possible investment paths. However, to keep the graph clear and easy to interpret, only ten representative trajectories are displayed—each one corresponding to a different percentile of the final investment distribution. This approach gives you a snapshot of potential outcomes, from the lower end (what you might end up with in less favorable conditions) to the higher end (the outcome if things go exceptionally well).</p>

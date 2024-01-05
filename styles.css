@@ -5,16 +5,34 @@
     display: flex; /* Added this line to enable Flexbox layout */
     flex-direction: column; /* Stack children vertically on small screens */
 }
-.content,
+
 #simulationResult {
     width: 100%;
 }
-.content input[type="number"],
+
+.content {
+    width: 100%; 
+    display: flex; /* Added this line to enable Flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+}
+
+.content input[type="number"] {
+    width: 20%; 
+    margin-bottom: 30px; /* Increase vertical separation */
+}
+
 .content input[type="range"],
 .content button {
-    width: 50%; /* Set the width of inputs and button to 50% */
-    margin-bottom: 20px; /* Increase vertical separation */
+    width: 40%; 
+    margin-bottom: 30px; /* Increase vertical separation */
 }
+
+#runSimulations {
+    padding: 15px 30px; /* Increase padding to make the button larger */
+    font-size: 20px; /* Increase font size for better visibility */
+    cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+}
+
 /* Styles for desktop devices */
 @media (min-width: 768px) {
     .container {
