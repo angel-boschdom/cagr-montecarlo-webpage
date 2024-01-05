@@ -5,35 +5,32 @@
     align-items: center; /* Center content horizontally */
     width: 100%; /* Full width */
 }
-
 /* Styles for the simulationResult */
 #simulationResult {
     width: 100%; /* Full width on mobile */
     margin-top: 20px; /* Add some space between elements */
 }
-
 /* Media query for desktop devices */
 @media (min-width: 768px) {
     .container {
-        flex-direction: row; /* Place items side by side on desktop */
+        flex-direction: column; /* Keep items stacked vertically on desktop */
         justify-content: center; /* Center content horizontally */
-        align-items: flex-start; /* Align items to the start of the cross axis */
+        align-items: center; /* Keep items centered horizontally */
     }
     #simulationResult {
-        width: 50%; /* Take up half of the container's width */
-        margin-top: 0; /* Reset the margin top */
-        margin-left: 20px; /* Add some space between the elements */
-        order: 2; /* Place the simulationResult on the right */
+        width: 100%; /* Full width on desktop */
+        margin-top: 20px; /* Keep the space between elements */
+        order: 2; /* Keep the simulationResult below the inputs */
     }
     .container > :not(#simulationResult) {
-        width: 50%; /* Assign half of the width to elements except simulationResult */
-        order: 1; /* Place these elements on the left */
+        width: 100%; /* Full width for all elements */
+        order: 1; /* Keep these elements above the simulationResult */
     }
 }
-
 /* Styles for the Run Simulations button */
 #runSimulations {
     padding: 15px 30px; /* Increase padding to make the button larger */
     font-size: 20px; /* Increase font size for better visibility */
     cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+    margin-top: 20px; /* Add some space above the button */
 }
