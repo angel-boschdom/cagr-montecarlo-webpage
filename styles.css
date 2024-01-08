@@ -1,44 +1,69 @@
+/* Fonts and colors */
+body {
+    font-family: 'Roboto', sans-serif; /* Set the font for the entire site */
+    background-color: #78d3c4; /* Eucalyptus green background color */
+}
+
+h1 {
+    color: #0b422e; /* Dark green color for the title */
+}
+
 /* Base styles for mobile-first approach */
 .container {
     width: 100%; /* Full width */
     margin: 0 auto; /* Center the container */
-    display: flex; /* Added this line to enable Flexbox layout */
+    display: flex; /* Enable Flexbox layout */
     flex-direction: column; /* Stack children vertically on small screens */
+    justify-content: center; /* Center children vertically */
+    align-items: center; /* Center children horizontally */
+}
+
+.input-wrapper {
+    display: flex; /* Enable Flexbox layout */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center elements horizontally */
+    width: 100%; /* Take full width to center the children */
+    margin-bottom: 10px; /* Space between each input-wrapper */
 }
 
 #simulationResult {
     width: 100%;
 }
-
 .content {
     width: 100%; 
-    display: flex; /* Added this line to enable Flexbox layout */
+    display: flex; /* Enable Flexbox layout */
     flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
 }
-
-.content input[type="number"] {
-    width: 20%; 
-    margin-bottom: 30px; /* Increase vertical separation */
+.content > div { /* New wrapper div for inputs and buttons */
+    width: 100%; /* Take full width to center the children */
+    display: flex; /* Enable Flexbox layout */
+    justify-content: center; /* Center children horizontally */
 }
-
+.content input[type="number"],
 .content input[type="range"],
 .content button {
-    width: 40%; 
     margin-bottom: 30px; /* Increase vertical separation */
 }
-
+.content input[type="number"] {
+    width: 20%; /* Narrow width for number inputs */
+    font-size: 1.5em; /* Larger font size for the number inside the input */
+}
+.content input[type="range"],
+.content button {
+    width: 40%; /* Custom width for range inputs and buttons */
+}
 #runSimulations {
     padding: 15px 30px; /* Increase padding to make the button larger */
     font-size: 20px; /* Increase font size for better visibility */
     cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
 }
-
 /* Styles for desktop devices */
 @media (min-width: 768px) {
     .container {
         flex-direction: row; /* Stack children horizontally on larger screens */
-        justify-content: space-between;
-        align-items: start;
+        justify-content: center; /* Center children horizontally */
+        align-items: center; /* Center children vertically */
     }
     
     .content,
