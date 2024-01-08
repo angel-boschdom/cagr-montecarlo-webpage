@@ -46,7 +46,7 @@ h1 {
     margin-bottom: 30px; /* Increase vertical separation */
 }
 .content input[type="number"] {
-    width: 20%; /* Narrow width for number inputs */
+    width: 25%; /* Narrow width for number inputs */
     font-size: 1.5em; /* Larger font size for the number inside the input */
 }
 .content input[type="range"],
