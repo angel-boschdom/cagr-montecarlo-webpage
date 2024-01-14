@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+     <!-- Osano cookie consent -->
+     <script src="https://cmp.osano.com/16BWNkU1MfIeFKXBu/7dae1bfe-d3c9-4c49-b7ee-000a14dbe956/osano.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V596K22BS0"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-V596K22BS0');
+        gtag('config', 'G-V596K22BS0', { 'anonymize_ip': true });
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compound Growth Simulator</title>
-    <link rel="stylesheet" href="/cagr-montecarlo-webpage/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts link -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -69,6 +71,6 @@
             <!-- The 2D figure is displayed here -->
         </div>
     </div>
-    <script src="/cagr-montecarlo-webpage/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
