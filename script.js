@@ -4,6 +4,24 @@ function updateSliderValue(sliderId, displayId) {
     display.textContent = slider.value;
 }
 
+function toggleMonthlyInput() {
+    var investmentType = document.getElementById('investmentType').value;
+    var monthlyInvestmentInput = document.getElementById('monthlyInvestmentInput');
+
+    // Check if the investment type is 'monthly' and show/hide the monthly investment input accordingly
+    if (investmentType === 'monthly') {
+        // Remove the 'hidden' class if it exists
+        if (monthlyInvestmentInput.classList.contains('hidden')) {
+            monthlyInvestmentInput.classList.remove('hidden');
+        }
+    } else {
+        // Add the 'hidden' class if it's not already there
+        if (!monthlyInvestmentInput.classList.contains('hidden')) {
+            monthlyInvestmentInput.classList.add('hidden');
+        }
+    }
+}
+
 function getColorForPercentile(percentile) {
     // Red to yellow gradient: interpolate between red (255,0,0) and yellow (255,255,0)
     var greenValue = Math.round(255 * (percentile / 10)); // Interpolate green channel
@@ -22,6 +40,8 @@ function gaussianRandom(mean=0, stdev=1) {
 function runSimulations() {
     // Retrieve input values
     var amountInvested = parseFloat(document.getElementById('amountInvested').value);
+    var investmentType = document.getElementById('investmentType').value; // Get the investment type
+    var monthlyInvestment = investmentType === 'monthly' ? parseFloat(document.getElementById('monthlyInvestment').value) : 0;
     var cagr = parseFloat(document.getElementById('cagr').value) / 100; // Convert percentage to decimal
     var volatility = parseFloat(document.getElementById('volatility').value) / 100; // Convert percentage to decimal
     var timeHorizon = parseInt(document.getElementById('timeHorizon').value);
@@ -32,6 +52,15 @@ function runSimulations() {
     var monthlyReturn = Math.log(1 + cagr)/12; // like cagr/12 but adjusted for compounding
     var monthlyVolatility = volatility/Math.sqrt(12); // lognormal process, volatility grows with sqrt(time)
 
+    // Calculate the timeseries of investment contributions
+    var investmentContributions = [amountInvested]; // Start with the initial amount invested
+    for (let month = 1; month <= numMonths; month++) {
+        // Each month, add the monthly investment to the last value
+        let lastValue = investmentContributions[month - 1];
+        let newValue = lastValue + monthlyInvestment;
+        investmentContributions.push(newValue);
+    }
+
     // Run all simulations and store final values with corresponding simulation data
     var simulationResults = [];
     for (let sim = 0; sim < monteCarloSimulations; sim++) {
@@ -40,7 +69,7 @@ function runSimulations() {
             let lastValue = data[month - 1];
             // Simulate the monthly growth with volatility
             let monthlyGrowth = monthlyReturn + monthlyVolatility*gaussianRandom(mean=0, stdev=1)
-            let newValue = lastValue * (1 + monthlyGrowth);
+            let newValue = lastValue * (1 + monthlyGrowth) + monthlyInvestment;
             data.push(newValue);
         }
         simulationResults.push({ finalValue: data[numMonths], data: data });
@@ -70,6 +99,18 @@ function runSimulations() {
         borderWidth: 1,
         pointRadius: 0, // Hide points for a cleaner look
     }));
+
+    // Add the blue dashed line dataset for the cumulative investments
+    datasets.push({
+        label: 'Cumulative Investment',
+        data: investmentContributions,
+        borderColor: 'blue',
+        backgroundColor: 'rgba(0, 0, 255, 0.1)', // Light blue fill under the line
+        borderWidth: 1,
+        borderDash: [5, 5], // Dashed line: 5px dash, 5px gap
+        pointRadius: 0, // Hide points for a cleaner look
+        fill: true // Fill the area under the line
+    });
 
     // Create Chart.js chart
     new Chart(ctx, {
@@ -124,8 +165,9 @@ function runSimulations() {
     });
 }
 
-// Initialize slider values on page load
+// Initialization
 document.addEventListener('DOMContentLoaded', function() {
     updateSliderValue('cagr', 'cagrValue');
     updateSliderValue('volatility', 'volatilityValue');
+    toggleMonthlyInput(); 
 });

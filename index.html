@@ -24,10 +24,23 @@
             <p>Monte Carlo simulations are a way to predict the outcome of a scenario that has a significant degree of uncertainty. By running thousands of simulations, each with random variations based on your inputted volatility, the tool can model a vast range of possible investment paths. However, to keep the graph clear and easy to interpret, only ten representative trajectories are displayed—each one corresponding to a different percentile of the final investment distribution. This approach gives you a snapshot of potential outcomes, from the lower end (what you might end up with in less favorable conditions) to the higher end (the outcome if things go exceptionally well).</p>
             
             <div class="input-wrapper">
-                <label for="amountInvested">Amount invested: </label>
-                <input type="number" id="amountInvested" name="amountInvested" value="1000" min="0" step="100">
+                <label for="investmentType">Investment Type:</label>
+                <select name="investmentType" id="investmentType" onchange="toggleMonthlyInput()">
+                    <option value="one-time">One-time investment</option>
+                    <option value="monthly">Monthly investments</option>
+                </select>
             </div>
-            
+
+            <div class="input-wrapper">
+                <label for="amountInvested">Initial amount invested:</label>
+                <input type="number" id="amountInvested" name="amountInvested" value="1000" step="100">
+            </div>
+      
+            <div class="input-wrapper hidden" id="monthlyInvestmentInput"> <!-- initially hidden -->
+                <label for="monthlyInvestment">Monthly investment:</label>
+                <input type="number" id="monthlyInvestment" name="monthlyInvestment" value="100" step="10">
+            </div>
+
             <div class="input-wrapper">
                 <label for="cagr">CAGR (%): <span id="cagrValue">9</span>%</label>
                 <input type="range" id="cagr" name="cagr" min="0" max="30" value="9" step="1" oninput="updateSliderValue('cagr', 'cagrValue')">
